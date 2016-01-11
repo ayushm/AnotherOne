@@ -30,7 +30,7 @@ twitterButton.onclick = function() {
 }
 
 linkButton.onclick = function() {
-	linkInput.value = "http://anotherone.herokuapp.com/api/viewKey/"+key;
+	linkInput.value = "https://anotherone.herokuapp.com/api/viewKey/"+key;
 	overlay.style.display = "block";
 	setTimeout(function(){
 		overlay.className = "fullOpacity";
@@ -65,7 +65,7 @@ function getRandomQuote() {
       		document.getElementById('author').innerHTML = obj.author;
     	}
   	};
-    xhttp.open("GET", "http://anotherone.herokuapp.com/api/viewKeyRandom", true);
+    xhttp.open("GET", "https://anotherone.herokuapp.com/api/viewKeyRandom", true);
     xhttp.send();
 }
 
@@ -78,7 +78,7 @@ function loadQuoteFromKey(key) {
       		document.getElementById('author').innerHTML = obj.author;
     	}
   	};
-    xhttp.open("GET", "http://anotherone.herokuapp.com/api/viewKey/"+key, true);
+    xhttp.open("GET", "https://anotherone.herokuapp.com/api/viewKey/"+key, true);
     xhttp.send();
 }
 
