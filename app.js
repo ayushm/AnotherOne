@@ -50,8 +50,9 @@ mongo.connect(mongoURI, function(err, db) {
 var routes = require("./routes/routes.js")(app);
 
 // set up HTTP and HTTPS if possible
+var AnotherPort = process.env.PORT || 3000;
 var httpServer = http.createServer(app);
-httpServer.listen(config.AnotherPort);
+httpServer.listen(AnotherPort);
 
 // inform user of IP
-console.log('View "AnotherOne" at localhost:' + config.AnotherPort);
+console.log('View "AnotherOne" at localhost:' + AnotherPort);

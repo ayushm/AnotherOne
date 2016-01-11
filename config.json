@@ -1,4 +1,3 @@
 {
-    "AnotherPort": 80,
     "mongoURI": "mongodb://pranavm:awesomesauce@ds045684.mongolab.com:45684/anotherone"
 }
