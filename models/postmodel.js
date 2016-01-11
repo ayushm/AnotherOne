@@ -1,6 +1,26 @@
 var shortid             = require("shortid");
 var mongo               = require("mongodb").MongoClient;
-var AnotherOne          = require("../app").AnotherOne;
+var mongoURI            = require("../config").mongoURI;
+
+var AnotherOne;
+mongo.connect(mongoURI, function(err, db) {
+    if (err) {
+        console.log(err);
+        callback(err, null);
+        return;
+    }
+    console.log(db);
+    AnotherOne = db.collection("AnotherOne");
+    AnotherOne.find({}).toArray(function(error, result) {
+        if (error) {
+            console.error(error);
+            return;
+        }
+        module.exports.AnotherOne = AnotherOne;
+        console.log("FIND RESULT");
+        console.log(result);
+    });
+});
 
 function Posts() { };
 

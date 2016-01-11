@@ -9,8 +9,7 @@ var fs              = require('fs');
 var http            = require('http');
 var cors            = require('cors');
 var mongo           = require("mongodb").MongoClient;
-
-var mongoURI = "mongodb://heroku_h6dk6mtx:lac4pujgurnrjciv2ff7qdhsel@ds039145.mongolab.com:39145/heroku_h6dk6mtx";
+var mongoURI        = require("./config").mongoURI;
 
 // use commands
 app.use(bodyParser.json({limit: '4mb'}));
@@ -27,13 +26,24 @@ app.use(express.static(__dirname + '/node_modules'));
 // create cluster and create buckets using config file
 // var cluster = new couchbase.Cluster(config.couchbase.server);
 // module.exports.postBucket = cluster.openBucket(config.couchbase.postBucket);
+
 mongo.connect(mongoURI, function(err, db) {
     if (err) {
         console.log(err);
         callback(err, null);
         return;
     }
-    var AnotherOne = db.collection("AnotherOne");
+    console.log(db);
+    AnotherOne = db.collection("AnotherOne");
+    AnotherOne.find({}).toArray(function(error, result) {
+        if (error) {
+            console.error(error);
+            return;
+        }
+        module.exports.AnotherOne = AnotherOne;
+        console.log("FIND RESULT");
+        console.log(result);
+    });
 });
 
 // include API endpoints
@@ -41,7 +51,7 @@ var routes = require("./routes/routes.js")(app);
 
 // set up HTTP and HTTPS if possible
 var httpServer = http.createServer(app);
-httpServer.listen(config.couchbase.AnotherPort);
+httpServer.listen(config.AnotherPort);
 
 // inform user of IP
-console.log('View "AnotherOne" at localhost:' + config.couchbase.AnotherPort);
+console.log('View "AnotherOne" at localhost:' + config.AnotherPort);

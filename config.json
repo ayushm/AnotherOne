@@ -1,7 +1,4 @@
 {
-    "couchbase": {
-        "server": "127.0.0.1:8091",
-        "postBucket": "KeysToSuccess",
-        "AnotherPort": 3000
-    }
+    "AnotherPort": 3000,
+    "mongoURI": "mongodb://pranavm:awesomesauce@ds045684.mongolab.com:45684/anotherone"
 }
