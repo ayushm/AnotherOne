@@ -1,3 +1,68 @@
 body {
-	background: url(../assets/images/ricepaper.png);
+	background: url(../assets/images/ricepaper.png);	
 }
+
+#key-image {
+	position: absolute;
+	height: 60vh;
+	left: 10vw;
+	top: 20vh;
+}
+
+#quote-super-container {
+	position: absolute;
+	width: 65vw;
+	//height: 55vh;
+	left: 25vw;
+	top: 25vh;
+	//background: #582;
+	background: rgba(253, 213, 45, 0.5);
+	padding: 2.5vh 2.5vw;
+}
+
+.quote-mark {
+	width: 100%;
+
+}
+
+.quote-mark img {
+	width: 5vw;
+}
+
+#start-quote {
+	float: left;
+}
+
+#end-quote img{
+	float: right;
+}
+
+#quote-container {
+	font-family: 'Arapey', sans-serif;
+	font-style: italic;
+	width: 45vw;
+	//margin: 5vh 5vw;
+	margin-left: 8vw;
+	font-size: 22pt;
+}
+
+#another-one-container {
+	position: absolute;
+	width: 50vw;
+	height: 8vh;
+	left: 25vw;
+	top: 70vh;
+	background: #595;
+	padding-left: 2.5vw;
+	padding-right: 2.5vw;
+	text-align: center;
+}
+
+#another-one-container button {
+	width: 50%;
+	height: 100%;
+}
+
+
+
+
