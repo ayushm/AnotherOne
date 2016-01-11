@@ -1,7 +1,6 @@
 var shortid             = require("shortid");
-var postBucket          = require("../app").postBucket;
-var postBucketName      = require("../config").couchbase.postBucket;
-var N1qlQuery           = require('couchbase').N1qlQuery;
+var mongo               = require("mongodb").MongoClient;
+var AnotherOne          = require("../app").AnotherOne;
 
 function Posts() { };
 
@@ -9,16 +8,17 @@ Posts.create = function(params, callback) {
     var currentTime = new Date().toISOString();
     var keyDoc = {
         time: currentTime,
-        keyID: (shortid.generate() + "_pub"),
+        keyID: ("majorkey_"+shortid.generate()),
         author: params.author,
         text: params.quote
     };
     console.log(keyDoc);
-    var insertPub = N1qlQuery.fromString('INSERT INTO ' + postBucketName + ' (KEY, VALUE) VALUES ($1, $2)');
-    postBucket.query(insertPub, [keyDoc.keyID, keyDoc], function (err, result) {
-        if (err) {
-            console.log(err);
-            callback(err, null);
+    // var insertPub = N1qlQuery.fromString('INSERT INTO ' + postBucketName + ' (KEY, VALUE) VALUES ($1, $2)');
+    // postBucket.query(insertPub, [keyDoc.keyID, keyDoc], function (err, result) {
+    AnotherOne.insert(keyDoc, function(error, result) {
+        if (error) {
+            console.log(error);
+            callback(error, null);
             return;
         }
         var idDoc = {"keyID" : keyDoc.keyID};
