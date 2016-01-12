@@ -63,9 +63,12 @@ function getRandomQuote() {
 	xhttp.onreadystatechange=function() {
     	if (xhttp.readyState == 4 && xhttp.status == 200) {
     		var obj = JSON.parse(xhttp.responseText);
-    		console.log(obj);
       		document.getElementById('quote').innerHTML = obj.text;
-      		document.getElementById('author').innerHTML = obj.author;
+      		if(obj.author.charAt(0) === '@') {
+      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">'+obj.author+'</a>';
+      		} else {
+      			document.getElementById('author').innerHTML = obj.author;
+      		}  
       		key = obj.keyID;
     	}
   	};
@@ -79,7 +82,11 @@ function loadQuoteFromKey(key) {
     	if (xhttp.readyState == 4 && xhttp.status == 200) {
     		var obj = JSON.parse(xhttp.responseText);
       		document.getElementById('quote').innerHTML = obj.text;
-      		document.getElementById('author').innerHTML = obj.author;
+      		if(obj.author.charAt(0) === '@') {
+      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">'+obj.author+'</a>';
+      		} else {
+      			document.getElementById('author').innerHTML = obj.author;
+      		}      		
     	}
   	};
     xhttp.open("GET", "https://anotherone.herokuapp.com/api/viewKey/"+key, true);
