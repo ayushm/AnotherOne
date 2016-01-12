@@ -8,11 +8,13 @@ var linkInput = document.getElementById('link-share-input');
 
 var anotherOneButton = document.getElementById('another-one-container');
 
+var key = "";
+
 
 document.addEventListener("DOMContentLoaded", function() {
-  var key = getURLParameter("key");
+  key = getURLParameter("key");
 
-  if(key !== null) {
+  if(key !== "" && key !== null) {
   	loadQuoteFromKey(key);
   } else {
   	getRandomQuote();
@@ -30,7 +32,7 @@ twitterButton.onclick = function() {
 }
 
 linkButton.onclick = function() {
-	linkInput.value = "https://anotherone.herokuapp.com/api/viewKey/"+key;
+	linkInput.value = "https://anotherone.herokuapp.com/?key="+key;
 	overlay.style.display = "block";
 	setTimeout(function(){
 		overlay.className = "fullOpacity";
@@ -61,8 +63,10 @@ function getRandomQuote() {
 	xhttp.onreadystatechange=function() {
     	if (xhttp.readyState == 4 && xhttp.status == 200) {
     		var obj = JSON.parse(xhttp.responseText);
+    		console.log(obj);
       		document.getElementById('quote').innerHTML = obj.text;
       		document.getElementById('author').innerHTML = obj.author;
+      		key = obj.keyID;
     	}
   	};
     xhttp.open("GET", "https://anotherone.herokuapp.com/api/viewKeyRandom", true);
