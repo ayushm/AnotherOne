@@ -1,0 +1,89 @@
+textarea {
+	width: 96%;
+	height: 65%;
+	padding: 2%;
+	outline: none;
+	font-family: 'Arapey', sans-serif;
+	font-size: 4vmin;
+	font-style: italic;
+	resize: none;
+}
+
+input[type=text] {
+	font-family: 'Arapey', sans-serif;
+	font-style: italic;
+	width: 100%;
+	height: 100%;
+	padding-left: 15px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 4vmin;
+	outline: none;
+}
+
+#quote-super-container {
+	height: 35vh;
+}
+
+#author {
+	width: 50%;
+	height: 20%;
+	font-size: 3vmin;
+}
+
+#author-char-count {
+	float: right;
+	font-size: 3vmin;
+}
+
+#char-count {
+	float: right;
+	font-size: 3vmin;
+}
+
+.over-limit {
+	color: red;
+}
+
+.red-border {
+	border: 2px solid red;
+}
+
+.tooltip
+{
+    display: inline;
+    position: relative;
+    text-decoration: none;
+    top: 0px;
+    left: 4px;
+}
+.tooltip:hover:after
+{
+    background: #000;
+    //background: rgba(0,0,0,.8);
+    border-radius: 5px;
+    top: -15px;
+    color: #fff;
+    content: attr(alt);
+    right: 103%;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 98;
+    width: 100%;
+    font-size: 2.5vmin;
+    font-style: none;
+}
+.tooltip:hover:before
+{
+    border: solid;
+    border-color: transparent #000;
+    border-width: 10px 0px 10px 10px;
+    bottom: 20px;
+    content: "";
+    right: 100%;
+    position: absolute;
+    z-index: 99;
+    top: 3px;
+}
+
