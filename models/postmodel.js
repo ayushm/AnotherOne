@@ -1,6 +1,7 @@
 var shortid             = require("shortid");
 var mongo               = require("mongodb").MongoClient;
 var mongoURI            = require("../config").mongoURI;
+var bodyParser          = require('body-parser');
 
 var AnotherOne;
 mongo.connect(mongoURI, function(err, db) {
