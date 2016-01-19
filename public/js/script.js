@@ -70,9 +70,9 @@ function getRandomQuote() {
     		var obj = JSON.parse(xhttp.responseText);
       		document.getElementById('quote').innerHTML = obj.text;
       		if(obj.author.charAt(0) === '@') {
-      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">'+obj.author+'</a>';
+      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">-'+obj.author+'</a>';
       		} else {
-      			document.getElementById('author').innerHTML = obj.author;
+      			document.getElementById('author').innerHTML = "-"+obj.author;
       		}  
       		processingOverlay.style.display = "none";
       		key = obj.keyID;
@@ -89,9 +89,9 @@ function loadQuoteFromKey(key) {
     		var obj = JSON.parse(xhttp.responseText);
       		document.getElementById('quote').innerHTML = obj.text;
       		if(obj.author.charAt(0) === '@') {
-      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">'+obj.author+'</a>';
+      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">-'+obj.author+'</a>';
       		} else {
-      			document.getElementById('author').innerHTML = obj.author;
+      			document.getElementById('author').innerHTML = "-"+obj.author;
       		}      	
       		processingOverlay.style.display = "none";	
     	}
