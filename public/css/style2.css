@@ -76,12 +76,12 @@ body {
 	left: 15vw;
 	top: 65vh;
 	text-align: center;
-	//background: #543;
 }
 
 #links-container img {
 	width: 5vmin;
 	margin: 2vmin;
+	-webkit-backface-visibility: hidden;
 	-webkit-transition: opacity 0.25s linear;
 	-moz-transition: opacity 0.25s linear;
 	-o-transition: opacity 0.25s linear;
