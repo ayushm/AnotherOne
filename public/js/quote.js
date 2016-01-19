@@ -55,7 +55,8 @@ submitButton.onclick = function() {
 		xhttp.onreadystatechange=function() {
 	    	if (xhttp.readyState == 4 && xhttp.status == 200) {
 	    		var obj = JSON.parse(xhttp.responseText);
-	      		window.location = "https://anotherone.herokuapp.com/?key="+obj.keyID;
+	      		//window.location = "https://anotherone.herokuapp.com/?key="+obj.keyID;
+	      		window.location = "/Users/ayushmehra/Desktop/Apps/Another%20One/AnotherOne/public/index.html?key="+obj.keyID;
 	    	}
 	  	};
 	    xhttp.open("POST", "https://anotherone.herokuapp.com/api/uploadKey", true);

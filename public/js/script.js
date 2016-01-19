@@ -2,6 +2,7 @@ var twitterButton = document.getElementById('twitter-button');
 var linkButton = document.getElementById('link-button');
 var quote = document.getElementById('quote').innerHTML;
 var author = document.getElementById('author').innerHTML;
+var processingOverlay = document.getElementById('processing-overlay');
 
 var overlay = document.getElementById('link-overlay');
 var linkInput = document.getElementById('link-share-input');
@@ -12,6 +13,9 @@ var key = "";
 
 
 document.addEventListener("DOMContentLoaded", function() {
+
+	processingOverlay.style.display = "block";
+
   key = getURLParameter("key");
 
   if(key !== "" && key !== null) {
@@ -55,6 +59,7 @@ overlay.onclick = function() {
 }
 
 anotherOneButton.onclick = function() {
+	processingOverlay.style.display = "block";
 	getRandomQuote();	    
 }
 
@@ -65,10 +70,11 @@ function getRandomQuote() {
     		var obj = JSON.parse(xhttp.responseText);
       		document.getElementById('quote').innerHTML = obj.text;
       		if(obj.author.charAt(0) === '@') {
-      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">'+obj.author+'</a>';
+      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">-'+obj.author+'</a>';
       		} else {
-      			document.getElementById('author').innerHTML = obj.author;
+      			document.getElementById('author').innerHTML = "-"+obj.author;
       		}  
+      		processingOverlay.style.display = "none";
       		key = obj.keyID;
     	}
   	};
@@ -83,10 +89,11 @@ function loadQuoteFromKey(key) {
     		var obj = JSON.parse(xhttp.responseText);
       		document.getElementById('quote').innerHTML = obj.text;
       		if(obj.author.charAt(0) === '@') {
-      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">'+obj.author+'</a>';
+      			document.getElementById('author').innerHTML = '<a href="http://twitter.com/'+obj.author+'">-'+obj.author+'</a>';
       		} else {
-      			document.getElementById('author').innerHTML = obj.author;
-      		}      		
+      			document.getElementById('author').innerHTML = "-"+obj.author;
+      		}      	
+      		processingOverlay.style.display = "none";	
     	}
   	};
     xhttp.open("GET", "https://anotherone.herokuapp.com/api/viewKey/"+key, true);
